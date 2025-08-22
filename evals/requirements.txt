@@ -3,4 +3,4 @@ rich
 ragas==0.2.13
 rapidfuzz==3.13.0
 langchain==0.3.17
-git+https://github.com/Azure-Samples/ai-rag-chat-evaluator@2025-06-02
+# If you need the evaluator, add your own repo or package here

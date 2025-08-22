@@ -42,7 +42,7 @@ The chat tab uses the approach programmed in `app/backend/approaches/chatreadret
 2. It queries Azure AI Search for search results for that query (optionally using the vector embeddings for that query).
 3. It then calls the OpenAI ChatCompletion API to answer the question based on the sources, using the prompt from `app/backend/approaches/prompts/chat_answer_question.prompty`. That call includes the past message history as well (or as many messages fit inside the model's token limit).
 
-The prompts are currently tailored to the sample data since they start with "Assistant helps the company employees with their healthcare plan questions, and questions about the employee handbook." Modify the [chat_query_rewrite.prompty](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/app/backend/approaches/prompts/chat_query_rewrite.prompty) and [chat_answer_question.prompty](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/app/backend/approaches/prompts/chat_answer_question.prompty) prompts to match your data.
+The prompts are currently tailored to the sample data since they start with "Assistant helps the company employees with their healthcare plan questions, and questions about the employee handbook." Modify the prompt files in `app/backend/approaches/prompts/` to match your data.
 
 ##### Chat with vision
 
@@ -61,7 +61,7 @@ The ask tab uses the approach programmed in `app/backend/approaches/retrievethen
 1. It queries Azure AI Search for search results for the user question (optionally using the vector embeddings for that question).
 2. It then combines the search results and user question, and calls the OpenAI ChatCompletion API to answer the question based on the sources, using the prompt from `app/backend/approaches/prompts/ask_answer_question.prompty`.
 
-The prompt for step 2 is currently tailored to the sample data since it starts with "You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions." Modify [ask_answer_question.prompty](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/app/backend/approaches/prompts/ask_answer_question.prompty) to match your data.
+The prompt for step 2 is currently tailored to the sample data since it starts with "You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions." Modify the prompt file in `app/backend/approaches/prompts/ask_answer_question.prompty` to match your data.
 
 #### Ask with vision
 
@@ -172,7 +172,7 @@ Here are additional ways for improving the search results:
 
 - Adding additional metadata to the "content" field, like the document title, so that it can be matched in the search results. Modify `app/backend/prepdocslib/searchmanager.py` to include more text in the `content` field.
 - Making additional fields searchable by the full text search step. For example, the "sourcepage" field is not currently searchable, but you could make that into a `SearchableField` with `searchable=True` in `app/backend/prepdocslib/searchmanager.py`. A change like that requires [re-building the index](https://learn.microsoft.com/azure/search/search-howto-reindex#change-an-index-schema).
-- Using function calling to search by particular fields, like searching by the filename. See this blog post on [function calling for structured retrieval](https://blog.pamelafox.org/2024/03/rag-techniques-using-function-calling.html).
+- Using function calling to search by particular fields, like searching by the filename. See the blog post on function calling for structured retrieval.
 - Using a different splitting strategy for the documents, or modifying the existing ones, to improve the chunks that are indexed. You can find the currently available splitters in `app/backend/prepdocslib/textsplitter.py`.
 
 ### Evaluating answer quality

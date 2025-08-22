@@ -72,7 +72,7 @@ Review the generated data in `evals/ground_truth.jsonl` after running that scrip
 
 ## Run bulk evaluation
 
-Review the configuration in `evals/eval_config.json` to ensure that everything is correctly setup. You may want to adjust the metrics used. See [the ai-rag-chat-evaluator README](https://github.com/Azure-Samples/ai-rag-chat-evaluator) for more information on the available metrics.
+Review the configuration in `evals/eval_config.json` to ensure that everything is correctly setup. You may want to adjust the metrics used. See the evaluator README for more information on the available metrics.
 
 By default, the evaluation script will evaluate every question in the ground truth data.
 Run the evaluation script by running the following command:
