@@ -1,6 +1,6 @@
 {
-    "pageTitle": "Saga: Internal Audit Assistant",
-    "headerTitle": "Saga: Internal Audit Assistant",
+    "pageTitle": "Saga: Audit Assistant",
+    "headerTitle": "Saga: Audit Assistant",
     "chat": "Chat",
     "qa": "Ask a question",
     "login": "Login",
@@ -34,15 +34,15 @@
     },
     "developerSettings": "Developer settings",
 
-    "chatEmptyStateTitle": "Chat with your audit data",
-    "chatEmptyStateSubtitle": "Ask anything or try an example",
+    "chatEmptyStateTitle": "Chat with your audit documents",
+    "chatEmptyStateSubtitle": "Ask an audit-related question or try an example below",
     "defaultExamples": {
-        "1": "What is included in my Northwind Health Plus plan that is not in standard?",
-        "2": "What happens in a performance review?",
-        "3": "What does a Product Manager do?",
-        "placeholder": "Type a new question (e.g. does my plan cover annual eye exams?)"
+        "1": "What are the key findings from the latest internal audit?",
+        "2": "Show me compliance issues identified in Q2 2025.",
+        "3": "List all outstanding audit recommendations for the finance department.",
+        "placeholder": "Type a new audit question (e.g. what controls failed in the last review?)"
     },
-    "askTitle": "Query your audit data",
+    "askTitle": "Query your audit documents",
     "gpt4vExamples": {
         "1": "Compare the impact of interest rates and GDP in financial markets.",
         "2": "What is the expected trend for the S&P 500 index over the next five years? Compare it to the past S&P 500 performance",
