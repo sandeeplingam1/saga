@@ -52,7 +52,7 @@ If you followed the instructions in [the GPT vision guide](gpt4v.md) to enable t
 2. For this step, it also calculates a vector embedding for the user question using [the Computer Vision vectorize text API](https://learn.microsoft.com/azure/ai-services/computer-vision/how-to/image-retrieval#call-the-vectorize-text-api), and passes that to the Azure AI Search to compare against the `imageEmbeddings` fields in the indexed documents. For each matching document, it downloads the image blob and converts it to a base 64 encoding.
 3. When it combines the search results and user question, it includes the base 64 encoded images, and sends along both the text and images to the GPT4 Vision model (similar to this [documentation example](https://platform.openai.com/docs/guides/vision/quick-start)). The model generates a response that includes citations to the images, and the UI renders the base64 encoded images when a citation is clicked.
 
-The prompt for step 2 is currently tailored to the sample data since it starts with "You are an intelligent assistant helping analyze the Annual Financial Report of Contoso Ltd.". Modify the `app/backend/approaches/prompts/chat_answer_question_vision.prompty` prompt to match your data.
+The prompt for step 2 is currently tailored to the sample data since it starts with "You are an intelligent assistant helping analyze the Annual Financial Report of ExampleCorp.". Modify the `app/backend/approaches/prompts/chat_answer_question_vision.prompty` prompt to match your data.
 
 #### Ask tab
 
@@ -61,7 +61,7 @@ The ask tab uses the approach programmed in `app/backend/approaches/retrievethen
 1. It queries Azure AI Search for search results for the user question (optionally using the vector embeddings for that question).
 2. It then combines the search results and user question, and calls the OpenAI ChatCompletion API to answer the question based on the sources, using the prompt from `app/backend/approaches/prompts/ask_answer_question.prompty`.
 
-The prompt for step 2 is currently tailored to the sample data since it starts with "You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions." Modify the prompt file in `app/backend/approaches/prompts/ask_answer_question.prompty` to match your data.
+The prompt for step 2 is currently tailored to the sample data since it starts with "You are an intelligent assistant helping ExampleCorp employees with their healthcare plan questions and employee handbook questions." Modify the prompt file in `app/backend/approaches/prompts/ask_answer_question.prompty` to match your data.
 
 #### Ask with vision
 
@@ -70,7 +70,7 @@ If you followed the instructions in [the GPT vision guide](gpt4v.md) to enable t
 1. For this step, it also calculates a vector embedding for the user question using [the Computer Vision vectorize text API](https://learn.microsoft.com/azure/ai-services/computer-vision/how-to/image-retrieval#call-the-vectorize-text-api), and passes that to the Azure AI Search to compare against the `imageEmbeddings` fields in the indexed documents. For each matching document, it downloads the image blob and converts it to a base 64 encoding.
 2. When it combines the search results and user question, it includes the base 64 encoded images, and sends along both the text and images to the GPT4 Vision model (similar to this [documentation example](https://platform.openai.com/docs/guides/vision/quick-start)). The model generates a response that includes citations to the images, and the UI renders the base64 encoded images when a citation is clicked.
 
-The prompt for step 2 is currently tailored to the sample data since it starts with "You are an intelligent assistant helping analyze the Annual Financial Report of Contoso Ltd". Modify the `app/backend/approaches/prompts/ask_answer_question_vision.prompty` prompt to match your data.
+The prompt for step 2 is currently tailored to the sample data since it starts with "You are an intelligent assistant helping analyze the Annual Financial Report of ExampleCorp.". Modify the `app/backend/approaches/prompts/ask_answer_question_vision.prompty` prompt to match your data.
 
 #### Making settings overrides permanent
 

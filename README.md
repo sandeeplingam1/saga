@@ -97,7 +97,7 @@ However, you can try the [Azure pricing calculator](https://azure.com/e/e3490de2
 To reduce costs, you can switch to free SKUs for various services, but those SKUs have limitations.
 See this guide on [deploying with minimal costs](docs/deploy_lowcost.md) for more details.
 
-⚠️ To avoid unnecessary costs, remember to take down your app if it's no longer in use,
+⚠️ To avoid unnecessary costs, remember to take down app if it's no longer in use,
 either by deleting the resource group in the Portal or running `azd down`.
 
 ## Getting Started
