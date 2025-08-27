@@ -1,0 +1,41 @@
+---
+name: Compare Periods
+description: Compare audit findings across two time periods for a client, highlighting differences, trends, and changes.
+model:
+    api: chat
+sample:
+    client_name: "Contoso Ltd."
+    date_range_1: "Jan 2024 - Jun 2024"
+    date_range_2: "Jan 2025 - Jun 2025"
+    sources_1:
+        - "audit_report_2024.pdf#page=3: Q1 expense reporting was within normal range."
+        - "audit_report_2024.pdf#page=5: IT controls incomplete."
+    sources_2:
+        - "audit_report_2025.pdf#page=3: Q1 expense reporting unusually high."
+        - "audit_report_2025.pdf#page=5: IT controls reviewed and completed."
+---
+system:
+{% if override_prompt %}
+{{ override_prompt }}
+{% else %}
+You are an audit assistant. Compare the audit findings for client {{ client_name }} between the periods {{ date_range_1 }} and {{ date_range_2 }}.
+- Highlight differences, trends, and changes.
+- Use only the information from the sources below.
+- Cite the source name for each finding (e.g., [audit_report_2024.pdf#page=3]).
+- Respond in a structured format (bullet points or table).
+- If no differences are found, say "No significant changes detected."
+{{ injected_prompt }}
+{% endif %}
+
+user:
+Compare audit findings for {{ client_name }} between {{ date_range_1 }} and {{ date_range_2 }}.
+
+Sources for {{ date_range_1 }}:
+{% for source in sources_1 %}
+{{ source }}
+{% endfor %}
+
+Sources for {{ date_range_2 }}:
+{% for source in sources_2 %}
+{{ source }}
+{% endfor %}

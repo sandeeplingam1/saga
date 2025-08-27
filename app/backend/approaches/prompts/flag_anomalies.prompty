@@ -1,0 +1,33 @@
+---
+name: Flag Anomalies
+description: Identify unusual entries, missing data, or inconsistencies in audit documents using only retrieved context.
+model:
+    api: chat
+sample:
+    client_name: "Contoso Ltd."
+    date_range: "Jan 2025 - Jun 2025"
+    sources:
+        - "audit_report.pdf#page=3: Expense reporting for Q1 is unusually high."
+        - "audit_report.pdf#page=5: IT controls checklist is incomplete."
+        - "audit_report.pdf#page=7: No evidence of compliance training for Q2."
+---
+system:
+{% if override_prompt %}
+{{ override_prompt }}
+{% else %}
+You are an audit assistant. Review the provided audit documents for client {{ client_name }} covering the period {{ date_range }}.
+- Identify and list any anomalies, missing data, or inconsistencies.
+- Use only the information from the sources below.
+- Cite the source name for each flagged item (e.g., [audit_report.pdf#page=3]).
+- Respond with a list of flagged items and brief explanations.
+- If no anomalies are found, say "No anomalies detected."
+{{ injected_prompt }}
+{% endif %}
+
+user:
+Flag anomalies for {{ client_name }} from {{ date_range }}.
+
+Sources:
+{% for source in sources %}
+{{ source }}
+{% endfor %}

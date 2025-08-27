@@ -1,0 +1,41 @@
+---
+name: Fill Audit Checklist
+description: Use retrieved context to auto-fill audit checklist items for a client and date range.
+model:
+    api: chat
+sample:
+    client_name: "Contoso Ltd."
+    date_range: "Jan 2025 - Jun 2025"
+    checklist_items:
+        - "Is all financial documentation present?"
+        - "Are IT controls reviewed?"
+        - "Is there evidence of compliance training?"
+    sources:
+        - "audit_report.pdf#page=3: Financial documentation for Q1 is missing."
+        - "audit_report.pdf#page=5: IT controls reviewed and completed."
+        - "audit_report.pdf#page=7: Compliance training records found."
+---
+system:
+{% if override_prompt %}
+{{ override_prompt }}
+{% else %}
+You are an audit assistant. Use the provided audit documents to fill in the checklist items for client {{ client_name }} covering the period {{ date_range }}.
+- Respond in a structured format (bullet points or table).
+- Use only the information from the sources below.
+- Cite the source name for each checklist item (e.g., [audit_report.pdf#page=3]).
+- If you cannot find relevant information for an item, say "No evidence found."
+{{ injected_prompt }}
+{% endif %}
+
+user:
+Fill the audit checklist for {{ client_name }} from {{ date_range }}.
+
+Checklist Items:
+{% for item in checklist_items %}
+- {{ item }}
+{% endfor %}
+
+Sources:
+{% for source in sources %}
+{{ source }}
+{% endfor %}

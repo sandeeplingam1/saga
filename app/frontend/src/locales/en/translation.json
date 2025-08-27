@@ -40,7 +40,7 @@
         "1": "What are the key findings from the latest internal audit?",
         "2": "Show me compliance issues identified in Q2 2025.",
         "3": "List all outstanding audit recommendations for the finance department.",
-        "placeholder": "Type a new audit question (e.g. what controls failed in the last review?)"
+        "placeholder": "Try me, I'll do my best. But I constantly improving."
     },
     "askTitle": "Query your audit documents",
     "gpt4vExamples": {
